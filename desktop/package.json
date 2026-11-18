@@ -1,0 +1,26 @@
+{
+  "name": "khatm-quran-desktop",
+  "version": "9.0.0",
+  "description": "ختم قرآن - نسخهٔ دسکتاپ (ویندوز / مک / لینوکس)",
+  "main": "main.js",
+  "author": "Khatm Quran",
+  "scripts": {
+    "prepare-app": "node copy-app.js",
+    "start": "npm run prepare-app && electron .",
+    "dist:win": "npm run prepare-app && electron-builder --win nsis portable",
+    "dist:mac": "npm run prepare-app && electron-builder --mac dmg",
+    "dist:linux": "npm run prepare-app && electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "ir.khatm.quran",
+    "productName": "ختم قرآن",
+    "files": ["main.js", "app/**/*"],
+    "win": { "icon": "app/icons/icon-512.png" },
+    "mac": { "category": "public.app-category.education", "icon": "app/icons/icon-512.png" },
+    "linux": { "category": "Education", "icon": "app/icons/icon-512.png" }
+  }
+}
